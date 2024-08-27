@@ -1,0 +1,3 @@
+What is an operating system?
+What is the OSI model?
+Who was Alan Turing?
