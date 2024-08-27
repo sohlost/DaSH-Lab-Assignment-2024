@@ -8,7 +8,7 @@ client = OpenAI()
 data = []
 mdl = "gpt-4o-mini"
 
-with open('/home/sohlost/DaSH-Lab-Assignment-2024/DevelopmentAssignment/input.txt', 'r') as file:
+with open('/home/sohlost/DaSH-Lab-Assignment-2024/DevelopmentAssignment/Level1/input.txt', 'r') as file:
     input_lines = file.readlines()
 
 for line in input_lines:
@@ -29,7 +29,7 @@ for line in input_lines:
         "Source": mdl
     }
     data.append(obj)
-    with open('/home/sohlost/DaSH-Lab-Assignment-2024/DevelopmentAssignment/output.json', 'a') as file:
+    with open('/home/sohlost/DaSH-Lab-Assignment-2024/DevelopmentAssignment/Level1/output.json', 'a') as file:
         json.dump(obj, file, indent=4)
         
 
