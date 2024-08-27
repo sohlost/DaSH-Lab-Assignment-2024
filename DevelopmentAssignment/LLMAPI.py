@@ -12,7 +12,7 @@ with open('/home/sohlost/DaSH-Lab-Assignment-2024/DevelopmentAssignment/input.tx
     input_lines = file.readlines()
 
 for line in input_lines:
-    timesent = datetime.now().isoformat()
+    timesent = datetime.now().timestamp()
     response = client.chat.completions.create(
         model=mdl,
         messages=[
@@ -20,9 +20,9 @@ for line in input_lines:
             {"role": "user", "content": line}
         ]
     )
-    timereceived = datetime.now().isoformat()
+    timereceived = datetime.now().timestamp()
     obj = {
-        "Prompt": line,
+        "Prompt": line, 
         "Response": response.choices[0].message.content,
         "TimeSent": timesent,
         "TimeRecvd": timereceived,
@@ -30,7 +30,8 @@ for line in input_lines:
     }
     data.append(obj)
     with open('/home/sohlost/DaSH-Lab-Assignment-2024/DevelopmentAssignment/output.json', 'a') as file:
-        file.write(json.dumps(obj) + '\n')
+        json.dump(obj, file, indent=4)co
+        
 
     
 
