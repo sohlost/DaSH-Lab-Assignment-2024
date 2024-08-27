@@ -30,7 +30,7 @@ for line in input_lines:
     }
     data.append(obj)
     with open('/home/sohlost/DaSH-Lab-Assignment-2024/DevelopmentAssignment/output.json', 'a') as file:
-        json.dump(obj, file, indent=4)co
+        json.dump(obj, file, indent=4)
         
 
     
