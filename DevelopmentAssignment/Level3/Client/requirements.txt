@@ -1,4 +1,0 @@
-openai
-socket 
-json
-sys

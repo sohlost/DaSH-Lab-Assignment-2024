@@ -61,7 +61,7 @@ def start_server(host, port):
         client_thread.start()
 
 if __name__ == "__main__":
-    start_server('localhost', 5000)
+    start_server('promptserver', 5000)
 
 
 

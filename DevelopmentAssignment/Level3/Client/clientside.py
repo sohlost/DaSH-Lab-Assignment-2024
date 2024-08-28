@@ -1,6 +1,8 @@
 import socket
 import json
 import sys
+import os
+host = os.environ.get('HOSTNAME')
 
 def start_client(host, port, client_id, input_file):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -40,4 +42,4 @@ if __name__ == "__main__":
     
     client_id = int(sys.argv[1])
     input_file = sys.argv[2]
-    start_client('localhost', 5000, client_id, input_file)
+    start_client(host, 5000, client_id, input_file)
