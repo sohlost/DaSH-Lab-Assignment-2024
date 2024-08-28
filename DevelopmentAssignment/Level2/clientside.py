@@ -1,31 +1,43 @@
 import socket
 import json
 import sys
-import os
 
-def start_client(host,port,input_file,output_file):
+def start_client(host, port, client_id, input_file):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client_socket.connect((host, port))
-    print(f"Connected to {host}:{port}")
+    
     with open(input_file, 'r') as file:
         input_lines = file.readlines()
-    for line in input_lines:
-        client_socket.send(line.encode('utf-8'))
-        data = client_socket.recv(4096).decode('utf-8') 
-        obj = json.loads(data)
-        with open(output_file,'a') as file:
-            json.dump(obj, file, indent=4)
-    client_socket.close()    
-    
 
+    line = input_lines[client_id-1]
+    data = {
+        'client_id': client_id,
+        'prompt': line.strip()
+    }
+    json_data = json.dumps(data)
+    client_socket.send(json_data.encode('utf-8'))
+    output_file = f"output_{client_id}.json"
+
+    with open(output_file, 'a') as file:
+        while True:
+            response = client_socket.recv(1024).decode('utf-8')
+            if not response:
+                break
+            obj = json.loads(response)
+            if (obj['ClientID'] != client_id):
+                obj['Source'] = "user"
+            json.dump(obj, file, indent=4)
+            file.write('\n')  # Add a newline after each JSON object
+            print(f"Received and saved response for prompt: {line.strip()}")
+            file.flush()  # Flush the file buffer to ensure data is written immediately
+    
+    client_socket.close()
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: python3 clientside.py <host> <port>")
+        print("Usage: python client.py <client_id> <input_file> ")
         sys.exit(1)
-
-    input_file = sys.argv[1]
-    output_file = sys.argv[2]
-    start_client("localhost", 5000, input_file, output_file)
-
-   
+    
+    client_id = int(sys.argv[1])
+    input_file = sys.argv[2]
+    start_client('localhost', 5000, client_id, input_file)

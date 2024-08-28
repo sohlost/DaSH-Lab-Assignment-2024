@@ -13,18 +13,21 @@ def handle_client(client_socket, address, clients):
             data = client_socket.recv(1024).decode('utf-8')
             if not data:
                 break
-            
+            promptobj = json.loads(data)
+            ClientID = promptobj['client_id']
+            prompt = promptobj['prompt']
             timesent = datetime.now().timestamp()
             response = aiclient.chat.completions.create(
                 model=mdl,
                 messages=[
                     {"role": "system", "content": "answer in 2-3 lines"},
-                    {"role": "user", "content": data}
+                    {"role": "user", "content": prompt}
                 ]
             )
             timereceived = datetime.now().timestamp()
             
             obj = {
+                "ClientID": ClientID,
                 "Prompt": data,
                 "Response": response.choices[0].message.content,
                 "TimeSent": timesent,
