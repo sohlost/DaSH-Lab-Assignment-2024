@@ -7,7 +7,7 @@ model = GPT2LMHeadModel.from_pretrained(model_name)
 tokenizer = GPT2Tokenizer.from_pretrained(model_name)
 
 
-input_text = "My name is Soham and I want to join DaSH Labs because I find these topics fascinating and"
+input_text = "LLM Inference is a cool topic because"
 
 input_ids = tokenizer.encode(input_text, return_tensors="pt")
 attention_mask = torch.ones(input_ids.shape, dtype=torch.long)
