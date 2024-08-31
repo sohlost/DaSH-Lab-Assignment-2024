@@ -2,6 +2,7 @@ import socket
 import json
 import sys
 
+
 def start_client(host, port, client_id, input_file):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client_socket.connect((host, port))

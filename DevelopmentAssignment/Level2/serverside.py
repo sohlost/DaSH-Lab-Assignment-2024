@@ -3,11 +3,12 @@ import json
 from datetime import datetime
 from openai import OpenAI
 import threading
-import os
+
+
 
 aiclient = OpenAI()
 mdl = "gpt-4o-mini"
-host = os.environ.get('HOSTNAME')
+
 
 def handle_client(client_socket, address, clients):
     while True:
@@ -63,7 +64,7 @@ def start_server(host, port):
         client_thread.start()
 
 if __name__ == "__main__":
-    start_server('host', 5000)
+    start_server('localhost', 5000)
 
 
 
