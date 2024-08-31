@@ -47,7 +47,7 @@ List of Literature Review -
 + Distributed Systems Playlist by Chris Collohan
 + "Does Varying the BeeGFS Configuration Affect the I/O Performance of HPC Workloads?" 
 + Chapters 35-41, 48-50 from Operating Systems: Three Easy Pieces. (Read the Persistence Module)
-Will try to read the Helix and Petals papers before the interview
++ Will try to read the Helix and Petals papers before the interview
   
   
  
