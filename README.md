@@ -7,65 +7,55 @@ Tried my best, had fun. Thanks for this assignment DaSH Labs!
 I mainly referred to the OpenAI's quickstart guides for this pretty simple code.
 Just make sure you have set an OpenAI key as an environment variable before running it and have the OpenAI library installed
 ```
-pip install openai
+<bash>pip install openai
 ```
 ```
-export OPENAI_API_KEY="your_api_key_here"
+<bash>export OPENAI_API_KEY="your_api_key_here"
 ```
 
 ### Level 2
 I used the basic HTTP sockets, used a 12 client - 1 server approach, each client responsible for one prompt and the rest is done as specified. 
+To run the entire client-server code- 
+```
+./launch.sh
+```
 
 ### Level 3
-
-
 
 Make sure that docker-compose and docker are both installed to run this. Do set an OpenAI API key in the Server Dockerfile to run this. 
 
 ```
-# Your code here
+ENV OPENAI_API_KEY <your-openai-key>
+```
+
+To run simply navigate to
+```
+cd DaSH-Lab-Assignment-2024/DevelopmentAssignment/Level3
+```
+and run
+```
+docker-compose up --build 
 ```
 
 ## Project Assignment
 
 ### Level 1
 
-Description of Level 1 for the Project Assignment goes here.
-
-Example code for Level 1:
-
-```
-# Your code here
-```
-
+List of Literature Review - 
++ "Fast Distributed Inference Serving for Large Language Models" (FastServe Paper)
++ "Attention is All You Need"
++ Distributed Systems Playlist by Chris Collohan
++ "Does Varying the BeeGFS Configuration Affect the I/O Performance of HPC Workloads?" 
++ Chapters 35-41, 48-50 from Operating Systems: Three Easy Pieces. (Read the Persistence Module)
+Will try to read the Helix and Petals papers before the interview
+  
+  
+ 
 ### Level 2
 
-Description of Level 2 for the Project Assignment goes here.
-
-Example code for Level 2:
-
-```
-# Your code here
-```
+Installed Pytorch,TensorFlow,HuggingFace's Transformer's library. To start using GPT-2 was simple, but initially it was generating the same sentence over and over again. Had to play around with settings of the generate() function (do_sample, top_k, top_p, temperature, etc.) to get a coherent prompt. 
 
 ### Level 3
 
-Description of Level 3 for the Project Assignment goes here.
+Was not able to do Level 3 due to time constraints, but would love to attempt this some day :)
 
-Example code for Level 3:
-
-```
-# Your code here
-```
-
-## Getting Started
-
-Instructions on how to set up and run the project go here.
-
-## Contributing
-
-Guidelines for contributing to the project (if applicable) go here.
-
-## License
-
-Information about the project's license goes here.
